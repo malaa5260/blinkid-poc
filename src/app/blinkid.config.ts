@@ -8,4 +8,5 @@
  * The key lives in blinkid.license.ts, which is git-ignored.
  * First time: copy blinkid.license.example.ts to blinkid.license.ts and paste your key.
  */
+
 export { BLINKID_LICENSE_KEY } from './blinkid.license';
