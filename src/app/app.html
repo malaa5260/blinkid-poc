@@ -1,0 +1,20 @@
+<main>
+  <h1>Customer onboarding</h1>
+  <p class="lead">Scan an ID card or passport to fill in the form automatically.</p>
+
+  <app-id-scanner (scanned)="onScanned($event)" />
+
+  <form (submit)="$event.preventDefault()">
+    @for (field of fields; track field.key) {
+      <label>
+        <span>{{ field.label }}</span>
+        <input
+          [type]="field.type ?? 'text'"
+          [name]="field.key"
+          [value]="form()[field.key]"
+          (input)="update(field.key, $any($event.target).value)"
+        />
+      </label>
+    }
+  </form>
+</main>

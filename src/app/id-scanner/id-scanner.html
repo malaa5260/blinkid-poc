@@ -1,0 +1,19 @@
+@switch (status()) {
+  @case ('loading') {
+    <p class="hint">Loading scanner…</p>
+  }
+  @case ('error') {
+    <p class="error" role="alert">{{ errorMessage() }}</p>
+  }
+}
+
+@if (status() !== 'scanning' && status() !== 'loading') {
+  <button type="button" (click)="start()">
+    {{ status() === 'done' ? 'Scan another document' : 'Scan ID with camera' }}
+  </button>
+} @else {
+  <button type="button" class="secondary" (click)="stop()">Cancel</button>
+}
+
+<!-- BlinkID mounts its camera + feedback UI inside this element. -->
+<div #scannerHost class="scanner-host"></div>
